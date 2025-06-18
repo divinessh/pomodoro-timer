@@ -1,0 +1,94 @@
+<!--Created by Divinessh-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Study Timer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    ::selection{
+      background:gold;
+      color:white;
+    }
+
+    body {
+      font-family: poppins, sans-serif;
+      background: royalblue;
+      color:white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .timer {
+      font-size: 60px;
+      margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family:poppins;
+      border: none;
+      background: white;
+      color: royalblue;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity:0.7;
+      transition:0.3s;
+    }
+    h1 {
+      font-size: 30px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Pomodoro Timer</h1>
+  <div class="timer" id="timer">25:00</div>
+  <button onclick="startTimer()">Start Timer</button>
+  <button onclick="resetTimer()">Reset Timer</button>
+
+  <script>
+    let timeLeft = 25 * 60; // 25 minutes
+    let timerInterval;
+    let running = false;
+
+    function updateDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      document.getElementById("timer").textContent =
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      if (running) return;
+      running = true;
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateDisplay();
+        } else {
+          clearInterval(timerInterval);
+          alert("Congrats! Its time for a break!");
+          running = false;
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timeLeft = 25 * 60;
+      running = false;
+      updateDisplay();
+    }
+
+    updateDisplay();
+  </script>
+</body>
+</html>
