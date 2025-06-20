@@ -2,7 +2,7 @@
 >A simple 25mins pomodoro timer that gives convenience for students to enhance their study sessions through Pomodoro method
 
 ## Presentation
-- Live Link: https://divinessh.github.io/pomodorotimer
+- Live Link: https://divinessh.github.io/pomodoro-timer
 ## Built With
 
 - HTML, CSS, JS
